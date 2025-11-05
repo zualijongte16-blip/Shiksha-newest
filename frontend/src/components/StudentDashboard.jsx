@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaBell, FaCog } from 'react-icons/fa';
 import Calendar from './Calendar';
 import './StudentDashboard.css';
 
@@ -11,6 +12,8 @@ const StudentDashboard = () => {
   const [filterSubject, setFilterSubject] = useState('All');
   const [notifications, setNotifications] = useState({});
   const [showCalendar, setShowCalendar] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   // Mock data for live classes
   const [liveClasses] = useState([
@@ -108,6 +111,22 @@ const StudentDashboard = () => {
     }));
   };
 
+  const toggleNotifications = () => {
+    setShowNotifications(!showNotifications);
+    setShowSettings(false);
+  };
+
+  const toggleSettings = () => {
+    setShowSettings(!showSettings);
+    setShowNotifications(false);
+  };
+
+  const handleSettingsSubmit = (e) => {
+    e.preventDefault();
+    alert('Settings updated successfully!');
+    setShowSettings(false);
+  };
+
   const filteredRecordedClasses = recordedClasses.filter(cls => {
     const matchesSearch = cls.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          cls.teacher.toLowerCase().includes(searchTerm.toLowerCase());
@@ -135,8 +154,65 @@ const StudentDashboard = () => {
           </div>
         </div>
         <div className="sd-top-navbar-right">
-          <span className="sd-nav-icon">🔔</span>
-          <span className="sd-nav-icon">&#9881;</span>
+          <div style={{ position: 'relative' }}>
+            <span
+              className="sd-nav-icon"
+              onClick={toggleNotifications}
+              style={{ cursor: "pointer", fontSize: "24px", color: "yellow" }}
+            >
+              🔔
+            </span>
+            {showNotifications && (
+              <div className="dropdown notifications-dropdown" style={{ position: 'absolute', top: '30px', right: '0', background: 'white', border: '1px solid #ddd', borderRadius: '5px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', padding: '10px', zIndex: 1001, width: '200px' }}>
+                <h4>Notifications</h4>
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                  <li style={{ padding: '5px 0', borderBottom: '1px solid #eee' }}>
+                    <strong>New Assignment:</strong> Mathematics homework due tomorrow at 10 AM
+                  </li>
+                  <li style={{ padding: '5px 0', borderBottom: '1px solid #eee' }}>
+                    <strong>Class Reminder:</strong> Physics live class starts in 30 minutes
+                  </li>
+                  <li style={{ padding: '5px 0' }}>
+                    <strong>Grade Update:</strong> Your English test score is now available
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+          <div style={{ position: 'relative' }}>
+            <FaCog
+              className="sd-nav-icon"
+              onClick={toggleSettings}
+              style={{ cursor: "pointer", fontSize: "30px" }}
+            />
+            {showSettings && (
+              <div className="modal settings-modal" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(0, 0, 0, 0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1002 }}>
+                <div className="modal-content" style={{ background: 'white', padding: '20px', borderRadius: '5px', width: '300px' }}>
+                  <h4>Settings</h4>
+                  <form onSubmit={handleSettingsSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <label style={{ display: 'flex', flexDirection: 'column' }}>
+                      Name:
+                      <input type="text" placeholder="Enter name" style={{ padding: '5px', marginTop: '5px' }} />
+                    </label>
+                    <label style={{ display: 'flex', flexDirection: 'column' }}>
+                      Username:
+                      <input type="text" placeholder="Enter username" style={{ padding: '5px', marginTop: '5px' }} />
+                    </label>
+                    <label style={{ display: 'flex', flexDirection: 'column' }}>
+                      Password:
+                      <input type="password" placeholder="Enter password" style={{ padding: '5px', marginTop: '5px' }} />
+                    </label>
+                    <label style={{ display: 'flex', flexDirection: 'column' }}>
+                      Email:
+                      <input type="email" placeholder="Enter email" style={{ padding: '5px', marginTop: '5px' }} />
+                    </label>
+                    <button type="submit" style={{ marginTop: '10px', padding: '5px', cursor: 'pointer' }}>Save Changes</button>
+                  </form>
+                  <button onClick={toggleSettings} style={{ marginTop: '10px', padding: '5px', cursor: 'pointer' }}>Close</button>
+                </div>
+              </div>
+            )}
+          </div>
           <button onClick={handleLogout} className="sd-logout-btn">Logout</button>
         </div>
       </nav>

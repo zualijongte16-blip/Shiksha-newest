@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaBell, FaCog } from 'react-icons/fa';
 import Calendar from './Calendar';
 import './TeacherDashboard.css';
 
@@ -14,6 +15,11 @@ const TeacherDashboard = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [selectedStudent, setSelectedStudent] = useState('');
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [settingsTab, setSettingsTab] = useState('personal');
+  const [teacherName, setTeacherName] = useState('Teacher Name');
+  const [teacherBio, setTeacherBio] = useState('English');
 
   // Mock data for students
   const [students] = useState([
@@ -88,6 +94,27 @@ const TeacherDashboard = () => {
     return matchesSearch && matchesClass;
   });
 
+  const toggleNotifications = () => {
+    setShowNotifications(!showNotifications);
+    setShowSettings(false);
+  };
+
+  const toggleSettings = () => {
+    setShowSettings(!showSettings);
+    setShowNotifications(false);
+  };
+
+  const handleSettingsSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const name = formData.get('name');
+    const bio = formData.get('bio');
+    if (name) setTeacherName(name);
+    if (bio) setTeacherBio(bio);
+    alert('Settings updated successfully!');
+    setShowSettings(false);
+  };
+
   return (
     <div className="teacher-dashboard">
       {/* Top Navbar */}
@@ -95,7 +122,7 @@ const TeacherDashboard = () => {
         <div className="teacher-top-navbar-left">
           <div className="teacher-profile-info">
             <div className="teacher-profile-avatar">T</div>
-            <span>Teacher Name</span>
+            <span>{teacherName} ({teacherBio})</span>
           </div>
           <div className="teacher-class-dropdown">
             <select value={selectedClass} onChange={handleClassChange}>
@@ -109,8 +136,132 @@ const TeacherDashboard = () => {
           </div>
         </div>
         <div className="teacher-top-navbar-right">
-          <span className="teacher-nav-icon">🔔</span>
-          <span className="teacher-nav-icon">&#9881;</span>
+           <div style={{ position: 'relative', display: 'inline-block', verticalAlign: 'middle' }}>
+             <span
+               className="teacher-nav-icon"
+               onClick={toggleNotifications}
+               style={{ cursor: "pointer", fontSize: "20px", color: "yellow", display: 'inline-block', verticalAlign: 'middle' }}
+             >
+               🔔
+             </span>
+             {showNotifications && (
+               <div className="dropdown notifications-dropdown" style={{ position: 'absolute', top: '30px', right: '0', background: 'white', border: '1px solid #ddd', borderRadius: '5px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', padding: '10px', zIndex: 1001, width: '200px' }}>
+                 <h4>Notifications</h4>
+                 <ul style={{ listStyle: 'none', padding: 0 }}>
+                   <li style={{ padding: '5px 0', borderBottom: '1px solid #eee' }}>
+                     <strong>Student Submission:</strong> Alice Johnson submitted Mathematics assignment
+                   </li>
+                   <li style={{ padding: '5px 0', borderBottom: '1px solid #eee' }}>
+                     <strong>Schedule Update:</strong> Physics class rescheduled to 11 AM tomorrow
+                   </li>
+                   <li style={{ padding: '5px 0' }}>
+                     <strong>System Alert:</strong> New student enrolled in Class 10
+                   </li>
+                 </ul>
+               </div>
+             )}
+           </div>
+           <div style={{ position: 'relative', display: 'inline-block', verticalAlign: 'middle' }}>
+             <FaCog
+               className="teacher-nav-icon"
+               onClick={toggleSettings}
+               style={{ cursor: "pointer", fontSize: "30px", display: 'inline-block', verticalAlign: 'middle' }}
+             />
+             {showSettings && (
+              <div className="modal settings-modal" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(0, 0, 0, 0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1002 }}>
+                <div className="modal-content" style={{ background: 'white', padding: '20px', borderRadius: '5px', width: '500px', maxHeight: '80vh', overflowY: 'auto' }}>
+                  <h4>Settings</h4>
+                  <div className="settings-tabs" style={{ display: 'flex', marginBottom: '20px' }}>
+                    <button
+                      onClick={() => setSettingsTab('personal')}
+                      style={{
+                        padding: '10px 20px',
+                        border: 'none',
+                        background: settingsTab === 'personal' ? '#007bff' : '#f8f9fa',
+                        color: settingsTab === 'personal' ? 'white' : 'black',
+                        cursor: 'pointer',
+                        borderRadius: '5px 0 0 5px'
+                      }}
+                    >
+                      Personal Info
+                    </button>
+                    <button
+                      onClick={() => setSettingsTab('account')}
+                      style={{
+                        padding: '10px 20px',
+                        border: 'none',
+                        background: settingsTab === 'account' ? '#007bff' : '#f8f9fa',
+                        color: settingsTab === 'account' ? 'white' : 'black',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      Account Settings
+                    </button>
+                    <button
+                      onClick={() => setSettingsTab('preferences')}
+                      style={{
+                        padding: '10px 20px',
+                        border: 'none',
+                        background: settingsTab === 'preferences' ? '#007bff' : '#f8f9fa',
+                        color: settingsTab === 'preferences' ? 'white' : 'black',
+                        cursor: 'pointer',
+                        borderRadius: '0 5px 5px 0'
+                      }}
+                    >
+                      Preferences
+                    </button>
+                  </div>
+                  <form onSubmit={handleSettingsSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {settingsTab === 'personal' && (
+                      <>
+                        <label style={{ display: 'flex', flexDirection: 'column' }}>
+                          Name:
+                          <input type="text" name="name" placeholder="Enter name" style={{ padding: '5px', marginTop: '5px' }} />
+                        </label>
+                        <label style={{ display: 'flex', flexDirection: 'column' }}>
+                          Bio:
+                          <textarea name="bio" placeholder="Enter bio" rows="3" style={{ padding: '5px', marginTop: '5px' }} />
+                        </label>
+                      </>
+                    )}
+                    {settingsTab === 'account' && (
+                      <>
+                        <label style={{ display: 'flex', flexDirection: 'column' }}>
+                          Username:
+                          <input type="text" placeholder="Enter username" style={{ padding: '5px', marginTop: '5px' }} />
+                        </label>
+                        <label style={{ display: 'flex', flexDirection: 'column' }}>
+                          Email:
+                          <input type="email" placeholder="Enter email" style={{ padding: '5px', marginTop: '5px' }} />
+                        </label>
+                        <label style={{ display: 'flex', flexDirection: 'column' }}>
+                          Password:
+                          <input type="password" placeholder="Enter password" style={{ padding: '5px', marginTop: '5px' }} />
+                        </label>
+                        <label style={{ display: 'flex', flexDirection: 'column' }}>
+                          Confirm Password:
+                          <input type="password" placeholder="Confirm password" style={{ padding: '5px', marginTop: '5px' }} />
+                        </label>
+                      </>
+                    )}
+                    {settingsTab === 'preferences' && (
+                      <>
+                        <label style={{ display: 'flex', flexDirection: 'column' }}>
+                          Theme:
+                          <select style={{ padding: '5px', marginTop: '5px' }}>
+                            <option>Light</option>
+                            <option>Dark</option>
+                          </select>
+                        </label>
+                      </>
+                    )}
+                    <button type="submit" style={{ marginTop: '10px', padding: '5px', cursor: 'pointer' }}>Save Changes</button>
+                  </form>
+                  <button onClick={toggleSettings} style={{ marginTop: '10px', padding: '5px', cursor: 'pointer' }}>Close</button>
+                </div>
+              </div>
+            )}
+          </div>
           <button onClick={handleLogout} className="teacher-logout-btn">Logout</button>
         </div>
       </nav>
@@ -135,7 +286,7 @@ const TeacherDashboard = () => {
           <div className="teacher-dashboard-content">
             {/* Welcome Banner */}
             <div className="teacher-welcome-banner">
-              <h1>Welcome, Teacher!</h1>
+              <h1>Welcome, {teacherName}!</h1>
               <p>"The best teachers are those who show you where to look but don't tell you what to see." - Alexandra K. Trenfor</p>
               <div className="teacher-profile-progress">
                 <span>Profile 85% complete</span>

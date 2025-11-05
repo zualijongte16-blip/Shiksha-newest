@@ -119,6 +119,82 @@
   background: #609b77ff;
 }
 
+/* Icons */
+.icon {
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: #67b39a;
+}
+
+/* Dropdowns and Modals */
+.dropdown {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1001;
+  width: 200px;
+}
+
+.notifications-dropdown ul {
+  list-style: none;
+  padding: 0;
+}
+
+.notifications-dropdown li {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1002;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-content label {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content input {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.modal-content button {
+  margin-top: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+
 .menu_icon {
   display: none;
 }

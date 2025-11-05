@@ -1,0 +1,396 @@
+.student-dashboard {
+  font-family: "Inter", Arial, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f4f6fb, #e8ecf5);
+  display: flex;
+  flex-direction: column;
+  color: #222;
+  overflow: hidden;
+} 
+
+/* ===== Top Navbar ===== */
+.sd-top-navbar {
+  background: linear-gradient(90deg, #2a2a5e, #3d3d73);
+  color: white;
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.sd-top-navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.sd-profile-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sd-profile-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #c5eeff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a2a5e;
+  font-weight: bold;
+}
+
+.sd-class-dropdown select {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #d6dcee;
+  color: #222;
+}
+
+.sd-top-navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.sd-nav-icon {
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.sd-nav-icon:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sd-logout-btn {
+  background: #181835;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sd-logout-btn:hover {
+  background: #30305d;
+}
+
+/* ===== Layout ===== */
+.sd-dashboard-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ===== Fixed Left Sidebar ===== */
+.sd-left-sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  height: calc(100vh - 60px);
+  width: 250px;
+  background: #c5dff4;
+  padding: 25px 0;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  z-index: 900;
+}
+
+.sd-sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sd-sidebar-nav li {
+  margin-bottom: 10px;
+}
+
+.sd-sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 25px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.sd-sidebar-nav a:hover {
+  background-color: #e8f2ff;
+}
+
+.sd-sidebar-icon {
+  font-size: 18px;
+}
+
+/* ===== Fixed Right Sidebar ===== */
+.sd-right-sidebar {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  height: calc(100vh - 60px);
+  width: 300px;
+  background: #ffffff;
+  padding: 25px;
+  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.08);
+  border-left: 1px solid #ddd;
+  overflow-y: auto;
+  z-index: 900;
+}
+
+/* ===== Main Dashboard ===== */
+.sd-main-dashboard {
+  flex: 1;
+  margin-left: 250px;
+  margin-right: 300px;
+  padding: 40px 50px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  background-color: transparent;
+}
+
+/* ===== Welcome Banner ===== */
+.sd-welcome-banner {
+  background: #9a9dc9;
+  color: #111;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.sd-welcome-banner h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.sd-welcome-banner p {
+  font-size: 1.2rem;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* ===== Profile Progress ===== */
+.sd-profile-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.sd-profile-progress span {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.sd-profile-progress .progress-bar {
+  width: 60%;
+  max-width: 300px;
+  background: #ddd;
+  border-radius: 10px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.sd-profile-progress .progress-fill {
+  height: 100%;
+  background: #5a5ea5;
+  transition: width 0.5s ease;
+}
+
+/* ===== Progress Summary ===== */
+.sd-progress-summary {
+  margin-top: 50px;
+}
+
+.sd-progress-summary h3 {
+  margin-bottom: 25px;
+  color: #111;
+  font-size: 1.6rem;
+}
+
+.sd-progress-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.sd-progress-card {
+  background: white;
+  border-radius: 14px;
+  padding: 30px 25px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.25s ease;
+}
+
+.sd-progress-card:hover {
+  transform: translateY(-6px);
+}
+
+.sd-progress-card h4 {
+  margin-bottom: 12px;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.sd-progress-card p {
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.sd-progress-card button {
+  background: #5a6cb5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sd-progress-card button:hover {
+  background: #7b87d0;
+}
+
+/* ===== Circular Progress ===== */
+.sd-circular-progress {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 15px;
+}
+
+.sd-progress-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(
+    #5a6cb5 calc(var(--percentage) * 1%),
+    #e0e0e0 0deg
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sd-progress-circle span {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* ===== Recent Activities ===== */
+.sd-recent-activities {
+  margin-top: 50px;
+}
+
+.sd-recent-activities h3 {
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.sd-activity-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sd-activity-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.sd-activity-icon {
+  width: 45px;
+  height: 45px;
+  background: #9a9dc9;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.4rem;
+}
+
+.sd-activity-content p {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ===== Quick Access ===== */
+.sd-quick-access h3 {
+  margin-bottom: 18px;
+  color: #1f1f33;
+}
+
+.sd-quick-access ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sd-quick-access a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #333;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.sd-quick-access a:hover {
+  background-color: #f2f4f8;
+}
+
+/* ===== Transparent Scrollbar ===== */
+.sd-main-dashboard::-webkit-scrollbar,
+.sd-left-sidebar::-webkit-scrollbar,
+.sd-right-sidebar::-webkit-scrollbar {
+  width: 2px;
+}
+
+.sd-main-dashboard::-webkit-scrollbar-thumb,
+.sd-left-sidebar::-webkit-scrollbar-thumb,
+.sd-right-sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0); /* subtle transparent thumb */
+  border-radius: 6px;
+}
+
+.sd-main-dashboard::-webkit-scrollbar-thumb:hover,
+.sd-left-sidebar::-webkit-scrollbar-thumb:hover,
+.sd-right-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.25); /* slightly more visible on hover */
+}
+
+.sd-main-dashboard::-webkit-scrollbar-track,
+.sd-left-sidebar::-webkit-scrollbar-track,
+.sd-right-sidebar::-webkit-scrollbar-track {
+  background: transparent; /* fully transparent track */
+}

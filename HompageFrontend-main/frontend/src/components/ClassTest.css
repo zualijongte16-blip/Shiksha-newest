@@ -1,0 +1,464 @@
+/* ===== Class Test Page (Modern Clean UI) ===== */
+.class-test {
+  font-family: "Inter", Arial, sans-serif;
+  min-height: 100vh;
+  background: #FBFBFE;
+  display: flex;
+  flex-direction: column;
+  color: #49465A;
+  letter-spacing: 0.3px;
+  padding-bottom: 60px;
+}
+
+/* ===== Page Header ===== */
+.C-T-page-header {
+  background: #6E6A83;
+  color: #FFFFFF;
+  padding: 24px 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.C-T-page-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* ===== Body ===== */
+.C-T-class-test-body {
+  padding: 40px 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== Classes List ===== */
+.C-T-classes-list {
+ display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+/* ===== Class Card ===== */
+.C-T-class-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 30px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid #F0F0F5;
+  flex: 1 1 400px;
+  min-width: 400px;
+}
+
+.C-T-class-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.C-T-class-card h3 {
+  color: #6E6A83;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #BFD7ED;
+  padding-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+/* ===== Tests List ===== */
+.C-T-tests-list {
+  margin-bottom: 1rem;
+}
+
+.C-T-tests-list h4 {
+  color: #49465A;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* ===== Test Item ===== */
+.C-T-test-item {
+  background: #F8FAFD;
+  border: 1px solid #E0D4FA;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 1rem;
+}
+
+.C-T-test-item span {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #6E6A83;
+}
+
+/* ===== Test Controls ===== */
+.C-T-test-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.C-T-test-controls button {
+  background: #E7EEF8;
+  color: #4b4657;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.C-T-test-controls button:hover {
+  background: #6E6A83;
+  color: #fff;
+}
+
+/* ===== Answers Preview ===== */
+.C-T-answers-preview {
+  background: #E7EEF8;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+.C-T-answer-item {
+  margin-bottom: 0.5rem;
+}
+
+.C-T-answer-item p {
+  margin: 0.2rem 0;
+  color: #49465A;
+}
+
+/* ===== Test Actions ===== */
+.C-T-test-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.C-T-test-actions button {
+  background: #E7EEF8;
+  color: #4b4657;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.C-T-test-actions button:hover {
+  background: #6E6A83;
+  color: #fff;
+}
+
+/* ===== Class Card Button ===== */
+.C-T-class-card button {
+  background: #6E6A83;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.C-T-class-card button:hover {
+  background: #5d5975;
+}
+
+/* ===== Test Section ===== */
+.C-T-test-section {
+  background: #F8FAFD;
+  border: 1px solid #E0D4FA;
+  border-radius: 10px;
+  padding: 25px;
+  margin-top: 1rem;
+}
+
+.C-T-test-section input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #E0D4FA;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.C-T-test-section input[type="text"]:focus {
+  border-color: #BFD7ED;
+  outline: none;
+}
+
+/* ===== Questions Builder ===== */
+.C-T-questions-builder {
+  margin-bottom: 1rem;
+}
+
+.C-T-question-builder {
+  background: white;
+  border: 1px solid #E0D4FA;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 1rem;
+}
+
+.C-T-question-builder input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #E0D4FA;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+
+.C-T-question-builder input[type="text"]:focus {
+  border-color: #BFD7ED;
+  outline: none;
+}
+
+.C-T-question-builder select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #E0D4FA;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+
+.C-T-question-builder select:focus {
+  border-color: #BFD7ED;
+  outline: none;
+}
+
+.C-T-options-builder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Edit Section ===== */
+.C-T-edit-section {
+  background: white;
+  border: 1px solid #E0D4FA;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.C-T-edit-section input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #E0D4FA;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.C-T-edit-section input[type="text"]:focus {
+  border-color: #BFD7ED;
+  outline: none;
+}
+
+.C-T-questions-editor {
+  margin-bottom: 1rem;
+}
+
+.C-T-question-editor {
+  background: #F8FAFD;
+  border: 1px solid #E0D4FA;
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 1rem;
+}
+
+.C-T-question-editor input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #E0D4FA;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+
+.C-T-question-editor input[type="text"]:focus {
+  border-color: #BFD7ED;
+  outline: none;
+}
+
+.C-T-question-editor select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #E0D4FA;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+
+.C-T-question-editor select:focus {
+  border-color: #BFD7ED;
+  outline: none;
+}
+
+.C-T-options-editor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.C-T-edit-section button {
+  background: #6E6A83;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.C-T-edit-section button:hover {
+  background: #5d5975;
+}
+
+/* ===== Modal ===== */
+.C-T-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 30, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+.C-T-modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  animation: fadeIn 0.35s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.C-T-modal-content h2 {
+  margin-top: 0;
+  color: #6E6A83;
+  font-weight: 600;
+  border-left: 4px solid #BFD7ED;
+  padding-left: 10px;
+}
+
+.C-T-modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.C-T-modal-content input, .C-T-modal-content select, .C-T-modal-content textarea {
+  padding: 10px;
+  border: 1px solid #E0D4FA;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+
+.C-T-modal-content input:focus, .C-T-modal-content select:focus, .C-T-modal-content textarea:focus {
+  border-color: #BFD7ED;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(191, 215, 237, 0.4);
+}
+
+.C-T-modal-content textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.C-T-modal-content button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.C-T-modal-content button[type="submit"] {
+  background: #6E6A83;
+  color: #fff;
+}
+
+.C-T-modal-content button[type="submit"]:hover {
+  background: #5d5975;
+}
+
+.C-T-modal-content button[type="button"] {
+  background: #f65c5c;
+  color: #fff;
+}
+
+.C-T-modal-content button[type="button"]:hover {
+  background: #e24a4a;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .C-T-page-header {
+    padding: 24px 20px;
+  }
+
+  .C-T-page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .C-T-class-test-body {
+    padding: 20px;
+  }
+
+  .C-T-classes-list {
+    grid-template-columns: 1fr;
+  }
+
+  .C-T-test-controls {
+    flex-direction: column;
+  }
+
+  .C-T-test-actions {
+    flex-direction: column;
+  }
+
+  .C-T-options-builder,
+  .C-T-options-editor {
+    grid-template-columns: 1fr;
+  }
+
+  .C-T-modal-content {
+    padding: 20px;
+  }
+}

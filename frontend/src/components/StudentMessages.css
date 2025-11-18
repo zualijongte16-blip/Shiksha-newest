@@ -1,0 +1,386 @@
+.student-messages {
+  font-family: "Inter", Arial, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f4f6fb, #e8ecf5);
+  display: flex;
+  flex-direction: column;
+  color: #222;
+  overflow: hidden;
+}
+
+.messages-container {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 60px); /* Adjust for top navbar if present */
+}
+
+.messages-sidebar {
+  width: 300px;
+  background: #c5dff4;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #222;
+}
+
+.new-message-btn {
+  width: 100%;
+  padding: 10px;
+  background: #5a6cb5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.new-message-btn:hover {
+  background: #7b87d0;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tabs button.active {
+  border-bottom-color: #5a6cb5;
+  color: #5a6cb5;
+}
+
+.filters {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.filters select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #222;
+}
+
+.chat-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.chat-item {
+  display: flex;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.chat-item:hover {
+  background-color: #e8f2ff;
+}
+
+.chat-item.selected {
+  background: #e3f2fd;
+}
+
+.chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #c5eeff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a2a5e;
+  font-weight: bold;
+}
+
+.chat-info {
+  flex: 1;
+}
+
+.chat-info h4 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.chat-info p {
+  margin: 2px 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.last-message {
+  font-size: 12px !important;
+  color: #999 !important;
+}
+
+.chat-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.unread-count {
+  background: #ff5722;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status.online {
+  background: #4caf50;
+}
+
+.status.offline {
+  background: #ccc;
+}
+
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header h3 {
+  margin: 0;
+}
+
+.chat-header p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.menu {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message.student {
+  align-items: flex-end;
+}
+
+.message.teacher {
+  align-items: flex-start;
+}
+
+.message-bubble {
+  max-width: 60%;
+  padding: 10px 15px;
+  border-radius: 18px;
+  position: relative;
+}
+
+.message.student .message-bubble {
+  background: #5a6cb5;
+  color: white;
+}
+
+.message.teacher .message-bubble {
+  background: #f1f1f1;
+  color: black;
+}
+
+.message.announcement .message-bubble {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  color: #856404;
+}
+
+.message-time {
+  font-size: 10px;
+  color: #999;
+  margin-top: 2px;
+}
+
+.chat-input {
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.chat-input button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.chat-input button:last-child {
+  background: #5a6cb5;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.chat-input button:last-child:hover {
+  background: #7b87d0;
+}
+
+.no-chat-selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #999;
+}
+
+.info-panel {
+  width: 250px;
+  background: #f9f9f9;
+  border-left: 1px solid #ddd;
+  padding: 20px;
+}
+
+.teacher-details, .shared-files, .quick-access {
+  margin-bottom: 20px;
+}
+
+.teacher-details h4, .shared-files h4, .quick-access h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.shared-files ul {
+  list-style: none;
+  padding: 0;
+}
+
+.shared-files li {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.quick-access button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #5a6cb5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.quick-access button:hover {
+  background: #7b87d0;
+}
+
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #5a6cb5;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dark-mode-toggle:hover {
+  background: #7b87d0;
+}
+
+/* Dark mode styles */
+.student-messages.dark {
+  background: #333;
+  color: #fff;
+}
+
+.student-messages.dark .messages-sidebar,
+.student-messages.dark .chat-window,
+.student-messages.dark .info-panel {
+  background: #444;
+  color: #fff;
+}
+
+.student-messages.dark .chat-item,
+.student-messages.dark .sidebar-header,
+.student-messages.dark .chat-header,
+.student-messages.dark .chat-input {
+  border-color: #555;
+}
+
+.student-messages.dark .message.teacher .message-bubble {
+  background: #555;
+  color: #fff;
+}
+
+.student-messages.dark .info-panel {
+  background: #444;
+}

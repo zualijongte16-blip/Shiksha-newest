@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="320" viewBox="0 0 120 320">
+  <g id="black_eyes">
+    <circle cx="38" cy="80" r="12" fill="#fff"/>
+    <circle cx="82" cy="80" r="12" fill="#fff"/>
+    <circle cx="38" cy="80" r="5" fill="#111827"/>
+    <circle cx="82" cy="80" r="5" fill="#111827"/>
+  </g>
+</svg>
